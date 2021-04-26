@@ -80,5 +80,28 @@ function getTweetsFromStorage() {
     }
     return tweets;
 }
+//Prints Local Storage tweets on Load
+function localStorageOnLoad() {
+    let tweets = getTweetsFromStorage();
+
+    //Loop throught storage and then Print the values
+    tweets.forEach(function(tweet) {
+        
+    //Create the remove button
+    const removeBtn = document.createElement('a');
+    removeBtn.classList = 'remove-tweet';
+    removeBtn.textContent = 'X';
+
+    //Create an <li> Element
+    const li = document.createElement('li');
+    li.textContent = tweet;
+ 
+    //Add the remove button to each tweet
+    li.appendChild(removeBtn);
+
+    //Add to the list
+    tweetList.appendChild(li);
+    });
+}
 
 
