@@ -58,4 +58,27 @@ function removeTweet(e){
     //Remove from Storage
     removeTweetLocalStorage(e.target.parentElement.textContent);
 }
+//Add the tweets into the local storage
+function addTweetLocalStorage(tweet) {
+    let tweets = getTweetsFromStorage();
+
+    //Add tweet into the array
+    tweets.push(tweet);
+
+    //Convert tweet array into sring
+    localStorage.setItem('tweets', JSON.stringify(tweets));
+}
+function getTweetsFromStorage() {
+    let tweets;
+    const tweetsLS = localStorage.getItem('tweets');
+
+    //Get the values, if null is returned then we create an empty array
+    if(localStorage.getItem('tweets')=== null) {
+        tweets = [];
+    } else {
+        tweets = JSON.parse(tweetsLS);
+    }
+    return tweets;
+}
+
 
